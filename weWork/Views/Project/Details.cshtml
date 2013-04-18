@@ -1,0 +1,57 @@
+﻿@model WeWorkModel.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Project</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.website)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.website)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tags)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tags)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.technologies)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.technologies)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.logo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.logo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.projectId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

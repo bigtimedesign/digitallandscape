@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="weWorkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="weWorkModelStoreContainer">
+    <EntitySet Name="Category" EntityType="weWorkModel.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Company" EntityType="weWorkModel.Store.Company" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompanyCategory" EntityType="weWorkModel.Store.CompanyCategory" store:Type="Tables" store:Schema="dbo" store:Name="CompanyCategory">
+      <DefiningQuery>SELECT 
+      [CompanyCategory].[companyCategoryId] AS [companyCategoryId], 
+      [CompanyCategory].[companyId] AS [companyId], 
+      [CompanyCategory].[categoryId] AS [categoryId]
+      FROM [dbo].[CompanyCategory] AS [CompanyCategory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Group" EntityType="weWorkModel.Store.Group" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupCategory" EntityType="weWorkModel.Store.GroupCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Person" EntityType="weWorkModel.Store.Person" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonCompany" EntityType="weWorkModel.Store.PersonCompany" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonGroup" EntityType="weWorkModel.Store.PersonGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonProject" EntityType="weWorkModel.Store.PersonProject" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Project" EntityType="weWorkModel.Store.Project" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Resource" EntityType="weWorkModel.Store.Resource" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_CompanyCategory_Category" Association="weWorkModel.Store.FK_CompanyCategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CompanyCategory" EntitySet="CompanyCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyCategory_Company" Association="weWorkModel.Store.FK_CompanyCategory_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyCategory" EntitySet="CompanyCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupCategory_Category" Association="weWorkModel.Store.FK_GroupCategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="GroupCategory" EntitySet="GroupCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupCategory_Group" Association="weWorkModel.Store.FK_GroupCategory_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="GroupCategory" EntitySet="GroupCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonCompany_Company" Association="weWorkModel.Store.FK_PersonCompany_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="PersonCompany" EntitySet="PersonCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonCompany_Person" Association="weWorkModel.Store.FK_PersonCompany_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="PersonCompany" EntitySet="PersonCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonGroup_Group" Association="weWorkModel.Store.FK_PersonGroup_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="PersonGroup" EntitySet="PersonGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonGroup_Person" Association="weWorkModel.Store.FK_PersonGroup_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="PersonGroup" EntitySet="PersonGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonProject_Person" Association="weWorkModel.Store.FK_PersonProject_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="PersonProject" EntitySet="PersonProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonProject_Project" Association="weWorkModel.Store.FK_PersonProject_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="PersonProject" EntitySet="PersonProject" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="categoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="categoryName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="categoryDescription" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="companyId" />
+    </Key>
+    <Property Name="companyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="website" Type="varchar" MaxLength="500" />
+    <Property Name="jobsPageUrl" Type="varchar" MaxLength="500" />
+    <Property Name="address" Type="varchar" MaxLength="500" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="tags" Type="varchar" MaxLength="255" />
+    <Property Name="technologies" Type="varchar" MaxLength="500" />
+    <Property Name="numberOfEmployees" Type="varchar" MaxLength="50" />
+    <Property Name="revenue" Type="varchar" MaxLength="50" />
+    <Property Name="logo" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'weWork.dbo.CompanyCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="CompanyCategory">
+    <Key>
+      <PropertyRef Name="companyCategoryId" />
+      <PropertyRef Name="companyId" />
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="companyCategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="companyId" Type="int" Nullable="false" />
+    <Property Name="categoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="groupId" />
+    </Key>
+    <Property Name="groupId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="groupName" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="website" Type="varchar" MaxLength="500" />
+    <Property Name="address" Type="varchar" MaxLength="500" />
+    <Property Name="mailingList" Type="varchar" MaxLength="500" />
+    <Property Name="description" Type="varchar" MaxLength="500" />
+    <Property Name="meetingInfo" Type="varchar" MaxLength="500" />
+    <Property Name="tags" Type="varchar" MaxLength="500" />
+    <Property Name="technologies" Type="varchar" MaxLength="500" />
+    <Property Name="logo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="GroupCategory">
+    <Key>
+      <PropertyRef Name="groupCategoryId" />
+    </Key>
+    <Property Name="groupCategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="groupId" Type="int" Nullable="false" />
+    <Property Name="categoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="personId" />
+    </Key>
+    <Property Name="personId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="location" Type="varchar" MaxLength="50" />
+    <Property Name="website" Type="varchar" MaxLength="255" />
+    <Property Name="bio" Type="varchar(max)" />
+    <Property Name="tags" Type="varchar" MaxLength="255" />
+    <Property Name="technologies" Type="varchar" MaxLength="500" />
+    <Property Name="photo" Type="varchar" MaxLength="255" />
+    <Property Name="token" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="PersonCompany">
+    <Key>
+      <PropertyRef Name="personCompanyId" />
+    </Key>
+    <Property Name="personCompanyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="personId" Type="int" Nullable="false" />
+    <Property Name="companyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonGroup">
+    <Key>
+      <PropertyRef Name="personGroupId" />
+    </Key>
+    <Property Name="personGroupId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="personId" Type="int" Nullable="false" />
+    <Property Name="groupId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonProject">
+    <Key>
+      <PropertyRef Name="personProjectId" />
+    </Key>
+    <Property Name="personProjectId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="personId" Type="int" Nullable="false" />
+    <Property Name="projectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="projectId" />
+    </Key>
+    <Property Name="projectId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="website" Type="varchar" MaxLength="500" />
+    <Property Name="description" Type="varchar" MaxLength="500" />
+    <Property Name="tags" Type="varchar" MaxLength="500" />
+    <Property Name="technologies" Type="varchar" MaxLength="500" />
+    <Property Name="logo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Resource">
+    <Key>
+      <PropertyRef Name="resourceId" />
+    </Key>
+    <Property Name="resourceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="url" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="description" Type="varchar" MaxLength="500" />
+    <Property Name="category" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK_CompanyCategory_Category">
+    <End Role="Category" Type="weWorkModel.Store.Category" Multiplicity="1" />
+    <End Role="CompanyCategory" Type="weWorkModel.Store.CompanyCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="CompanyCategory">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyCategory_Company">
+    <End Role="Company" Type="weWorkModel.Store.Company" Multiplicity="1" />
+    <End Role="CompanyCategory" Type="weWorkModel.Store.CompanyCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="companyId" />
+      </Principal>
+      <Dependent Role="CompanyCategory">
+        <PropertyRef Name="companyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupCategory_Category">
+    <End Role="Category" Type="weWorkModel.Store.Category" Multiplicity="1" />
+    <End Role="GroupCategory" Type="weWorkModel.Store.GroupCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="GroupCategory">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupCategory_Group">
+    <End Role="Group" Type="weWorkModel.Store.Group" Multiplicity="1" />
+    <End Role="GroupCategory" Type="weWorkModel.Store.GroupCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="groupId" />
+      </Principal>
+      <Dependent Role="GroupCategory">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonCompany_Company">
+    <End Role="Company" Type="weWorkModel.Store.Company" Multiplicity="1" />
+    <End Role="PersonCompany" Type="weWorkModel.Store.PersonCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="companyId" />
+      </Principal>
+      <Dependent Role="PersonCompany">
+        <PropertyRef Name="companyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonCompany_Person">
+    <End Role="Person" Type="weWorkModel.Store.Person" Multiplicity="1" />
+    <End Role="PersonCompany" Type="weWorkModel.Store.PersonCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="personId" />
+      </Principal>
+      <Dependent Role="PersonCompany">
+        <PropertyRef Name="personId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonGroup_Group">
+    <End Role="Group" Type="weWorkModel.Store.Group" Multiplicity="1" />
+    <End Role="PersonGroup" Type="weWorkModel.Store.PersonGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="groupId" />
+      </Principal>
+      <Dependent Role="PersonGroup">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonGroup_Person">
+    <End Role="Person" Type="weWorkModel.Store.Person" Multiplicity="1" />
+    <End Role="PersonGroup" Type="weWorkModel.Store.PersonGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="personId" />
+      </Principal>
+      <Dependent Role="PersonGroup">
+        <PropertyRef Name="personId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonProject_Person">
+    <End Role="Person" Type="weWorkModel.Store.Person" Multiplicity="1" />
+    <End Role="PersonProject" Type="weWorkModel.Store.PersonProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="personId" />
+      </Principal>
+      <Dependent Role="PersonProject">
+        <PropertyRef Name="personId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonProject_Project">
+    <End Role="Project" Type="weWorkModel.Store.Project" Multiplicity="1" />
+    <End Role="PersonProject" Type="weWorkModel.Store.PersonProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="projectId" />
+      </Principal>
+      <Dependent Role="PersonProject">
+        <PropertyRef Name="projectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

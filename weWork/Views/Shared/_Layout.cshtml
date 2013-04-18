@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("PEOPLE", "Index", "People")</li>
+                            <li>@Html.ActionLink("COMPANIES", "Index", "Company")</li>
+                            <li>@Html.ActionLink("GROUPS", "Index", "Group")</li>
+                            <li>@Html.ActionLink("PROJECTS", "Index", "Project")</li>
+                            <li>@Html.ActionLink("RESOURCES", "Index", "Category")</li>
+                            <li>@Html.ActionLink("ABOUT", "About", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <div id="footer">
+            <div id="citizenry_credit">
+            Powered by
+            <a href="http://l9digitalstrategies.com/">L9</a>.
+            </div>
+            <div id="contact_link">
+            Email
+            <a href="mailto:trevor@l9digitalstrategies.com">trevor@l9digitalstrategies.com</a>
+            </div>
+            <div id="twitter_link">
+            Follow
+            <a href="https://twitter.com/l9digital">@@l9digital</a>
+            on Twitter
+            </div>
+            <div id="human_credit">
+            Brought to you by
+            <a href="l9digitalstrategies.com">many contributors</a>
+            </div>
+</div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

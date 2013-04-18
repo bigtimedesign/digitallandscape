@@ -1,0 +1,29 @@
+﻿@model WeWorkModel.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Category</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.categoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.categoryName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.categoryDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.categoryDescription)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.categoryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

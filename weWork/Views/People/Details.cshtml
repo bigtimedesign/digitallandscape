@@ -1,0 +1,71 @@
+﻿@model WeWorkModel.Person
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Person</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.location)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.location)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.website)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.website)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.bio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.bio)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tags)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tags)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.technologies)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.technologies)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.photo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.photo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.token)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.token)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.personId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

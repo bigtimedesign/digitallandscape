@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="weWorkModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="weWorkEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="weWorkModel.Category" />
+    <EntitySet Name="Companies" EntityType="weWorkModel.Company" />
+    <EntitySet Name="CompanyCategories" EntityType="weWorkModel.CompanyCategory" />
+    <EntitySet Name="Groups" EntityType="weWorkModel.Group" />
+    <EntitySet Name="GroupCategories" EntityType="weWorkModel.GroupCategory" />
+    <EntitySet Name="People" EntityType="weWorkModel.Person" />
+    <EntitySet Name="PersonCompanies" EntityType="weWorkModel.PersonCompany" />
+    <EntitySet Name="PersonGroups" EntityType="weWorkModel.PersonGroup" />
+    <EntitySet Name="PersonProjects" EntityType="weWorkModel.PersonProject" />
+    <EntitySet Name="Projects" EntityType="weWorkModel.Project" />
+    <EntitySet Name="Resources" EntityType="weWorkModel.Resource" />
+    <AssociationSet Name="FK_CompanyCategory_Category" Association="weWorkModel.FK_CompanyCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="CompanyCategory" EntitySet="CompanyCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupCategory_Category" Association="weWorkModel.FK_GroupCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="GroupCategory" EntitySet="GroupCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyCategory_Company" Association="weWorkModel.FK_CompanyCategory_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyCategory" EntitySet="CompanyCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonCompany_Company" Association="weWorkModel.FK_PersonCompany_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="PersonCompany" EntitySet="PersonCompanies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupCategory_Group" Association="weWorkModel.FK_GroupCategory_Group">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="GroupCategory" EntitySet="GroupCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonGroup_Group" Association="weWorkModel.FK_PersonGroup_Group">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="PersonGroup" EntitySet="PersonGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonCompany_Person" Association="weWorkModel.FK_PersonCompany_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="PersonCompany" EntitySet="PersonCompanies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonGroup_Person" Association="weWorkModel.FK_PersonGroup_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="PersonGroup" EntitySet="PersonGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonProject_Person" Association="weWorkModel.FK_PersonProject_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="PersonProject" EntitySet="PersonProjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonProject_Project" Association="weWorkModel.FK_PersonProject_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="PersonProject" EntitySet="PersonProjects" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="categoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categoryName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="categoryDescription" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="CompanyCategories" Relationship="weWorkModel.FK_CompanyCategory_Category" FromRole="Category" ToRole="CompanyCategory" />
+    <NavigationProperty Name="GroupCategories" Relationship="weWorkModel.FK_GroupCategory_Category" FromRole="Category" ToRole="GroupCategory" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="companyId" />
+    </Key>
+    <Property Name="companyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="website" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="jobsPageUrl" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="tags" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="technologies" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="numberOfEmployees" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="revenue" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="logo" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="CompanyCategories" Relationship="weWorkModel.FK_CompanyCategory_Company" FromRole="Company" ToRole="CompanyCategory" />
+    <NavigationProperty Name="PersonCompanies" Relationship="weWorkModel.FK_PersonCompany_Company" FromRole="Company" ToRole="PersonCompany" />
+  </EntityType>
+  <EntityType Name="CompanyCategory">
+    <Key>
+      <PropertyRef Name="companyCategoryId" />
+      <PropertyRef Name="companyId" />
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="companyCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="companyId" Type="Int32" Nullable="false" />
+    <Property Name="categoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="weWorkModel.FK_CompanyCategory_Category" FromRole="CompanyCategory" ToRole="Category" />
+    <NavigationProperty Name="Company" Relationship="weWorkModel.FK_CompanyCategory_Company" FromRole="CompanyCategory" ToRole="Company" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="groupId" />
+    </Key>
+    <Property Name="groupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="groupName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="website" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="mailingList" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="meetingInfo" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="tags" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="technologies" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="logo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="GroupCategories" Relationship="weWorkModel.FK_GroupCategory_Group" FromRole="Group" ToRole="GroupCategory" />
+    <NavigationProperty Name="PersonGroups" Relationship="weWorkModel.FK_PersonGroup_Group" FromRole="Group" ToRole="PersonGroup" />
+  </EntityType>
+  <EntityType Name="GroupCategory">
+    <Key>
+      <PropertyRef Name="groupCategoryId" />
+    </Key>
+    <Property Name="groupCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <Property Name="categoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="weWorkModel.FK_GroupCategory_Category" FromRole="GroupCategory" ToRole="Category" />
+    <NavigationProperty Name="Group" Relationship="weWorkModel.FK_GroupCategory_Group" FromRole="GroupCategory" ToRole="Group" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="personId" />
+    </Key>
+    <Property Name="personId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="location" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="website" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="bio" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="tags" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="technologies" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="photo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="token" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="PersonCompanies" Relationship="weWorkModel.FK_PersonCompany_Person" FromRole="Person" ToRole="PersonCompany" />
+    <NavigationProperty Name="PersonGroups" Relationship="weWorkModel.FK_PersonGroup_Person" FromRole="Person" ToRole="PersonGroup" />
+    <NavigationProperty Name="PersonProjects" Relationship="weWorkModel.FK_PersonProject_Person" FromRole="Person" ToRole="PersonProject" />
+  </EntityType>
+  <EntityType Name="PersonCompany">
+    <Key>
+      <PropertyRef Name="personCompanyId" />
+    </Key>
+    <Property Name="personCompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="personId" Type="Int32" Nullable="false" />
+    <Property Name="companyId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="weWorkModel.FK_PersonCompany_Company" FromRole="PersonCompany" ToRole="Company" />
+    <NavigationProperty Name="Person" Relationship="weWorkModel.FK_PersonCompany_Person" FromRole="PersonCompany" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="PersonGroup">
+    <Key>
+      <PropertyRef Name="personGroupId" />
+    </Key>
+    <Property Name="personGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="personId" Type="Int32" Nullable="false" />
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="weWorkModel.FK_PersonGroup_Group" FromRole="PersonGroup" ToRole="Group" />
+    <NavigationProperty Name="Person" Relationship="weWorkModel.FK_PersonGroup_Person" FromRole="PersonGroup" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="PersonProject">
+    <Key>
+      <PropertyRef Name="personProjectId" />
+    </Key>
+    <Property Name="personProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="personId" Type="Int32" Nullable="false" />
+    <Property Name="projectId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="weWorkModel.FK_PersonProject_Person" FromRole="PersonProject" ToRole="Person" />
+    <NavigationProperty Name="Project" Relationship="weWorkModel.FK_PersonProject_Project" FromRole="PersonProject" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="projectId" />
+    </Key>
+    <Property Name="projectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="website" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="tags" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="technologies" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="logo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="PersonProjects" Relationship="weWorkModel.FK_PersonProject_Project" FromRole="Project" ToRole="PersonProject" />
+  </EntityType>
+  <EntityType Name="Resource">
+    <Key>
+      <PropertyRef Name="resourceId" />
+    </Key>
+    <Property Name="resourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="url" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="category" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_CompanyCategory_Category">
+    <End Role="Category" Type="weWorkModel.Category" Multiplicity="1" />
+    <End Role="CompanyCategory" Type="weWorkModel.CompanyCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="CompanyCategory">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupCategory_Category">
+    <End Role="Category" Type="weWorkModel.Category" Multiplicity="1" />
+    <End Role="GroupCategory" Type="weWorkModel.GroupCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="GroupCategory">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyCategory_Company">
+    <End Role="Company" Type="weWorkModel.Company" Multiplicity="1" />
+    <End Role="CompanyCategory" Type="weWorkModel.CompanyCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="companyId" />
+      </Principal>
+      <Dependent Role="CompanyCategory">
+        <PropertyRef Name="companyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonCompany_Company">
+    <End Role="Company" Type="weWorkModel.Company" Multiplicity="1" />
+    <End Role="PersonCompany" Type="weWorkModel.PersonCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="companyId" />
+      </Principal>
+      <Dependent Role="PersonCompany">
+        <PropertyRef Name="companyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupCategory_Group">
+    <End Role="Group" Type="weWorkModel.Group" Multiplicity="1" />
+    <End Role="GroupCategory" Type="weWorkModel.GroupCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="groupId" />
+      </Principal>
+      <Dependent Role="GroupCategory">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonGroup_Group">
+    <End Role="Group" Type="weWorkModel.Group" Multiplicity="1" />
+    <End Role="PersonGroup" Type="weWorkModel.PersonGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="groupId" />
+      </Principal>
+      <Dependent Role="PersonGroup">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonCompany_Person">
+    <End Role="Person" Type="weWorkModel.Person" Multiplicity="1" />
+    <End Role="PersonCompany" Type="weWorkModel.PersonCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="personId" />
+      </Principal>
+      <Dependent Role="PersonCompany">
+        <PropertyRef Name="personId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonGroup_Person">
+    <End Role="Person" Type="weWorkModel.Person" Multiplicity="1" />
+    <End Role="PersonGroup" Type="weWorkModel.PersonGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="personId" />
+      </Principal>
+      <Dependent Role="PersonGroup">
+        <PropertyRef Name="personId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonProject_Person">
+    <End Role="Person" Type="weWorkModel.Person" Multiplicity="1" />
+    <End Role="PersonProject" Type="weWorkModel.PersonProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="personId" />
+      </Principal>
+      <Dependent Role="PersonProject">
+        <PropertyRef Name="personId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonProject_Project">
+    <End Role="Project" Type="weWorkModel.Project" Multiplicity="1" />
+    <End Role="PersonProject" Type="weWorkModel.PersonProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="projectId" />
+      </Principal>
+      <Dependent Role="PersonProject">
+        <PropertyRef Name="projectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

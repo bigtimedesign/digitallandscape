@@ -1,0 +1,12 @@
+﻿    @model weWork.Models.SummaryModel
+
+    <div id="front_nav">
+        <ul id="front_nav">
+        <h2 id="home_to">HOME TO</h2>
+        <li class="people">@Html.ActionLink(Model.PeopleCount  + " People", "Index", "People")</li>
+        <li class="companies">@Html.ActionLink(Model.CompanyCount  + " Companies", "Index", "Company")</li>
+        <li class="groups">@Html.ActionLink(Model.GroupCount  + " Groups", "Index", "Group")</li>
+        <li class="projects">@Html.ActionLink(Model.ProjectCount  + " Projects", "Index", "Project")</li>
+        <li class="resources">@Html.ActionLink(Model.ResourcesCount  + " Resources", "Index", "Resource")</li>
+        </ul>
+    </div>

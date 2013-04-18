@@ -1,0 +1,8 @@
+C:\Development\L9\Learning\Learning\WeWorkModel\bin\Release\WeWorkModel.dll.config
+C:\Development\L9\Learning\Learning\WeWorkModel\bin\Release\WeWorkModel.dll
+C:\Development\L9\Learning\Learning\WeWorkModel\bin\Release\WeWorkModel.pdb
+C:\Development\L9\Learning\Learning\WeWorkModel\obj\Release\ResolveAssemblyReference.cache
+C:\Development\L9\Learning\Learning\WeWorkModel\obj\Release\WeWorkModel.dll
+C:\Development\L9\Learning\Learning\WeWorkModel\obj\Release\WeWorkModel.pdb
+C:\Development\L9\Learning\Learning\WeWorkModel\bin\Release\EntityFramework.dll
+C:\Development\L9\Learning\Learning\WeWorkModel\bin\Release\EntityFramework.xml

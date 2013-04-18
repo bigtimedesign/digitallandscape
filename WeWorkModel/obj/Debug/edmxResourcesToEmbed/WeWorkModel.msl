@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="weWorkModelStoreContainer" CdmEntityContainer="weWorkEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="weWorkModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+          <ScalarProperty Name="categoryDescription" ColumnName="categoryDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="weWorkModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="companyId" ColumnName="companyId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="jobsPageUrl" ColumnName="jobsPageUrl" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="technologies" ColumnName="technologies" />
+          <ScalarProperty Name="numberOfEmployees" ColumnName="numberOfEmployees" />
+          <ScalarProperty Name="revenue" ColumnName="revenue" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyCategories">
+      <EntityTypeMapping TypeName="weWorkModel.CompanyCategory">
+        <MappingFragment StoreEntitySet="CompanyCategory">
+          <ScalarProperty Name="companyCategoryId" ColumnName="companyCategoryId" />
+          <ScalarProperty Name="companyId" ColumnName="companyId" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="weWorkModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="groupName" ColumnName="groupName" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="mailingList" ColumnName="mailingList" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="meetingInfo" ColumnName="meetingInfo" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="technologies" ColumnName="technologies" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupCategories">
+      <EntityTypeMapping TypeName="weWorkModel.GroupCategory">
+        <MappingFragment StoreEntitySet="GroupCategory">
+          <ScalarProperty Name="groupCategoryId" ColumnName="groupCategoryId" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="weWorkModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="personId" ColumnName="personId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="bio" ColumnName="bio" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="technologies" ColumnName="technologies" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="token" ColumnName="token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonCompanies">
+      <EntityTypeMapping TypeName="weWorkModel.PersonCompany">
+        <MappingFragment StoreEntitySet="PersonCompany">
+          <ScalarProperty Name="personCompanyId" ColumnName="personCompanyId" />
+          <ScalarProperty Name="personId" ColumnName="personId" />
+          <ScalarProperty Name="companyId" ColumnName="companyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonGroups">
+      <EntityTypeMapping TypeName="weWorkModel.PersonGroup">
+        <MappingFragment StoreEntitySet="PersonGroup">
+          <ScalarProperty Name="personGroupId" ColumnName="personGroupId" />
+          <ScalarProperty Name="personId" ColumnName="personId" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonProjects">
+      <EntityTypeMapping TypeName="weWorkModel.PersonProject">
+        <MappingFragment StoreEntitySet="PersonProject">
+          <ScalarProperty Name="personProjectId" ColumnName="personProjectId" />
+          <ScalarProperty Name="personId" ColumnName="personId" />
+          <ScalarProperty Name="projectId" ColumnName="projectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="weWorkModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="projectId" ColumnName="projectId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="technologies" ColumnName="technologies" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resources">
+      <EntityTypeMapping TypeName="weWorkModel.Resource">
+        <MappingFragment StoreEntitySet="Resource">
+          <ScalarProperty Name="resourceId" ColumnName="resourceId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="category" ColumnName="category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
