@@ -1,0 +1,23 @@
+﻿@model WeWorkModel.Company
+@{
+    ViewBag.Title = "Companies in the GTA";
+}
+<h2>
+    Companies in the GTA</h2>
+<div id="map_canvas" style="width: 80%; height: 80%">
+    stuff
+</div>
+<script type="text/javascript">
+    function initialize() {
+        var latlng = new google.maps.LatLng(40.716948, -74.003563);
+        var options = { zoom: 14, center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById
+			("map_canvas"), options);
+    }
+
+
+    initialize(); 
+    
+</script>

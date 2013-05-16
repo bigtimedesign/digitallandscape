@@ -4,84 +4,31 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="section_header">
+    <h1><span class="count">@Model.Count() </span> Companies</h1>
+    @Html.ActionLink("+ Add a Company", "Create")
+    <div id="view_options">
+        <span class="sorting">
+            <strong>Sort by:</strong>
+            <a class="name asc" href="/companies?column=name&order=asc">Name</a>
+            ,
+            <a class="created_at current asc" href="/companies?column=created_at&order=asc">Date added</a>
+            ,
+            <a class="random asc" href="/companies?column=random&order=asc">Random</a>
+        </span>
+    </div>
+    @Html.ActionLink("Map", "Map")
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.website)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.jobsPageUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tags)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.technologies)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numberOfEmployees)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.revenue)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.logo)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.website)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.jobsPageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tags)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.technologies)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numberOfEmployees)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.revenue)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.logo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.companyId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.companyId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.companyId })
-        </td>
-    </tr>
-}
-
-</table>
+<ul class="resource_list companies">
+    @foreach (var item in Model) {
+        <li class="company">
+            <a class="avatar" href="@item.logo"><img src="@item.logo"/></a>
+    
+            <h3>
+                @Html.ActionLink(item.name, "Details", new { id = item.companyId })
+            </h3>
+            <p class="description">@item.description</p>
+        </li>
+    }
+</ul>

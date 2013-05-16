@@ -386,6 +386,8 @@
     <Content Include="Views\Resource\Create.cshtml" />
     <Content Include="Views\Resource\Edit.cshtml" />
     <Content Include="Views\Resource\Delete.cshtml" />
+    <Content Include="Views\Shared\SectionHeader.cshtml" />
+    <Content Include="Views\Company\Map.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

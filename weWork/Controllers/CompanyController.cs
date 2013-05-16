@@ -99,6 +99,13 @@ namespace weWork.Controllers
             return RedirectToAction("Index");
         }
 
+        public ViewResult Map()
+        {
+            return View("Map");
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
